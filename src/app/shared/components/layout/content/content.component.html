@@ -1,0 +1,86 @@
+<!-- page-wrapper Start-->
+<div class="ltr light-only">
+    <div class="page-wrapper LosAngeles"
+         id="canvas-bookmark">
+
+        <div class="container-fluid">
+            <div class="row" style="justify-content: center!important;" *ngIf="content=='sms'">
+                <div class="col-6">
+                    <div class="card mt-5" style="box-shadow: 1px -1px 20px 3px #5e8286;">
+                        <div class="card-header text-center">
+                            <h5 style="color: #486467;">Try to send your MSG !</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group" [formGroup]="smsForm">
+                                <label class="col-form-label">Phone Number</label>
+                                <input class="form-control" type="phone" required="true" placeholder="98912099099"
+                                       formControlName="msisdn">
+                                <label class="col-form-label"> </label>
+
+                                <label class="col-form-label"> </label>
+                                <label class="col-form-label">Message</label>
+                                <input class="form-control" type="msg" required="true" placeholder="message"
+                                       formControlName="message">
+                                <label class="col-form-label">Source Number</label>
+                                <input class="form-control" type="msg" required="true" placeholder="9888009999"
+                                       formControlName="smsNo">
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn-outline-primary btn-pill" style="width: 5rem;" (click)="sendSms()">Send</button>
+                            </div>
+                        </div>
+                        <div class="card-body text-right">
+                            <label class="col-form-label text-right" dir="rtl">  جهت ارسال انبوه پیامک، فایل اکسل را آپلود نمایید. </label>
+                            <form dir="rtl" method="post" enctype="multipart/form-data" [formGroup]="fileUploadForm" >
+                                <input dir="rtl" type="file" name="file" (change)="setFile($event)"/>
+                            </form>
+                            <button style="width: 5rem;" class="btn-outline-primary btn-pill mt-3" (click)="sendBatchFile()">Send</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="justify-content: center!important;" *ngIf="content=='users'">
+                <div class="col-6">
+                    <div class="card mt-5" style="box-shadow: 1px -1px 20px 3px #5e8286;">
+                        <div class="card-header">
+                            <h5>Users List</h5>
+                        </div>
+                        <div class="card-block row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First Name</th>
+                                            <th scope="col">Last Name</th>
+                                            <th scope="col">Email</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let user of users">
+                                            <th scope="row">1</th>
+                                            <td>{{user.name}}</td>
+                                            <td>{{user.surname}}</td>
+                                            <td>{{user.email}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="btn-outline-primary btn-pill floatingBtn" *ngIf="content=='sms'" (click)="getUsers()">Users
+        </button>
+        <button class="btn-outline-primary btn-pill floatingBtn" *ngIf="content=='users'" (click)="getUsers()">Sms
+        </button>
+
+        <div class="bg-overlay1"></div>
+    </div>
+</div>

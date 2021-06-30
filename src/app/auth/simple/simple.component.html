@@ -1,0 +1,43 @@
+<div class="container-fluid p-0" xmlns:th="http://www.w3.org/1999/xhtml">
+  <div class="row">
+    <div class="col-12">     
+      <div class="login-card">
+        <div>
+          
+          <div class="login-main"> 
+            <form class="theme-form" [formGroup]="signUpForm">
+              <h4>Create your account</h4>
+              <div class="form-group">
+                <label class="col-form-label pt-0">Your Name</label>
+                <div class="form-row">
+                  <div class="col-6">
+                    <input class="form-control" type="text" required="" placeholder="First name" formControlName="firstName">
+                  </div>
+                  <div class="col-6">
+                    <input class="form-control" type="text" required="" placeholder="Last name" formControlName="lastName">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Email Address</label>
+                <input class="form-control" type="email" required="" placeholder="app@yourmail.com" formControlName="email">
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Password</label>
+                <input class="form-control" [type]="show ? 'text' : 'password'" name="login[password]" required="" placeholder="*********" formControlName="password">
+                <div class="show-hide" (click)="showPassword()" *ngIf="!show"><span class="show"></span></div>
+                <div class="show-hide" (click)="showPassword()" *ngIf="show"><span class="Hide"></span></div>
+              </div>
+              <div class="form-group mb-0">
+                
+                <button class="btn btn-primary btn-block" (click)="signup()" type="button">Create Account</button>
+
+              </div>
+              <p class="mt-4 mb-0">Already have an account?<a class="ml-2" [routerLink]="'../login'">login</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
